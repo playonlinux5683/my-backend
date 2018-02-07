@@ -13,29 +13,42 @@
 |
 */
 
-const User = use('App/Models/User')
+// const User = use('App/Models/User')
 const Route = use('Route')
 
-Route.on('/').render('home')
+Route.
+  group(() => {
+    // Route.get('/', 'AuthController.index')
+    Route.on('/').render('home')
+    Route.get('/login', 'AuthController.index').as('login')
+    Route.post('/login', 'AuthController.login')//.as('login')
+    Route.get('/logout', 'AuthController.logout').as('logout')
+    Route.get('/register', 'RegisterController.index').as('register')
+    Route.post('/register', 'RegisterController.doRegister')//.as('register')
 
-Route
-  .group(() => {
-    Route
-      .resource('users', 'UserController')
-      .except(['create', 'edit'])
-
-    Route
-      .get('/signout', 'UserController.signout')
-      .as('signout')
   })
-  .middleware(['auth'])
+// .middleware('auth:session')
 
-Route
-  .post('/signin', 'UserController.signin')
-  .as('signin')
 
-Route.on('/signin').render('signin')
-Route.on('/signup').render('signup')
+
+// Route
+//   .group(() => {
+//     Route
+//       .resource('users', 'UserController')
+//       .except(['create', 'edit'])
+
+//     Route
+//       .get('/signout', 'UserController.signout')
+//       .as('signout')
+//   })
+//   .middleware(['auth:session'])
+
+// Route
+//   .post('/signin', 'UserController.signin')
+//   .as('signin')
+
+// Route.on('/signin').render('signin')
+// Route.on('/signup').render('signup')
 // GET / signin => sign in page
 // POST / signin => sign in form submit
 

@@ -1,8 +1,0 @@
-<p> Please sign up or <a href="{{route('/signin')}}">sign in</a></p>
-<form method="POST" action="{{route('/users')}}">
-  {{ csrfField() }}
-  <input type="text" name="username" value="" placeholder="Username">
-  <input type="text" name="email" value="" placeholder="Email">
-  <input type="password" name="password" value="" placeholder="Password">
-  <button type="submit">GO</button>
-</form>

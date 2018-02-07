@@ -2,9 +2,9 @@
 @section('content')
   @loggedIn
     <h2> Hello {{ auth.user.username }} </h2>
-    <a href="{{ route('signout') }}">sign out</a>
+    <a href="{{ route('logout') }}">Sign out</a>
   @else
-    <a href="{{ route('/signin') }}">Sign In</a>
-    <a href="{{ route('/signup') }}">Sign Up</a>
+    <a href="{{ route('login') }}">Sign In</a>
+    <a href="{{ route('register') }}">Sign Up</a>
   @endloggedIn
 @endsection

@@ -1,7 +1,7 @@
 'use strict'
 
 class UserController {
-  async signin({ request, response, auth }) {
+  async * signin({ request, response, auth }) {
     // console.log(arguments);
     const { email, password } = request.all()
     console.log(request.all())
@@ -13,12 +13,13 @@ class UserController {
       response.send('You are not logged in')
     }
   }
+
   async signout({ request, response, auth }) {
     // console.log(arguments);
 
     try {
       await auth.logout()
-      return response.redirect('/')
+      return response.redirect('signin')
     } catch (error) {
       console.log(error)
       response.send('You are not logged in')
